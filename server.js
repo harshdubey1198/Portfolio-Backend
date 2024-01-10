@@ -1,10 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
+const cors = require('cors'); // Import the cors middleware
 const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 10000;
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Connect to MongoDB Atlas
 const uri = "mongodb+srv://maharaaj:maharaaj@portfolio.exwn9uz.mongodb.net/?retryWrites=true&w=majority";
