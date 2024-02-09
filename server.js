@@ -22,10 +22,7 @@ const contactSchema = new mongoose.Schema({
   email: String,
   mobile: String,
   message: String,
-  resume: {
-    data: Buffer,
-    contentType: String,
-  },
+ 
 });
 
 const Contact = mongoose.model('Contact', contactSchema);
@@ -35,12 +32,9 @@ app.use(express.json());
 app.post('/submit-form', upload.single('resume'), async (req, res) => {
   try {
     const { name, email, mobile, message } = req.body;
-    const resume = {
-      data: req.file.buffer,
-      contentType: req.file.mimetype,
-    };
+    
 
-    await Contact.create({ name, email, mobile, message, resume });
+    await Contact.create({ name, email, mobile, message });
 
     res.status(200).send('Form submitted successfully');
   } catch (error) {
