@@ -22,7 +22,8 @@ const contactSchema = new mongoose.Schema({
   email: String,
   mobile: String,
   message: String,
- 
+  latitude: Number, // Add latitude field to schema
+  longitude: Number, // Add longitude field to schema
 });
 
 const Contact = mongoose.model('Contact', contactSchema);
@@ -31,10 +32,9 @@ app.use(express.json());
 
 app.post('/submit-form', upload.single('resume'), async (req, res) => {
   try {
-    const { name, email, mobile, message } = req.body;
-    
+    const { name, email, mobile, message, latitude, longitude } = req.body;
 
-    await Contact.create({ name, email, mobile, message });
+    await Contact.create({ name, email, mobile, message, latitude, longitude }); // Include latitude and longitude in the creation object
 
     res.status(200).send('Form submitted successfully');
   } catch (error) {
