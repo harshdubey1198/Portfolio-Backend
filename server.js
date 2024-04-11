@@ -8,7 +8,7 @@ const port = process.env.PORT || 10000;
 
 app.use(cors());
 
-const uri = "mongodb+srv://maharaaj:maharaaj@portfolio.exwn9uz.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://maharaaj:maharaaj@Portfolio.exwn9uz.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
